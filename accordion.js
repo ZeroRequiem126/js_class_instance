@@ -1,25 +1,38 @@
 (() => {
-    const $elm = document.querySelector('#js-accordion');
-    const $trigger = $elm.getElementsByTagName('a');
 
-    const triggerLen = $trigger.length;
-    let index = 0;
-    while (index < triggerLen) {
-        $trigger[index].addEventListener('click', (e) => clickHandler(e));
-        index++;
-    }
+    class Accordion {
+        constructor(obj) {
 
-    const clickHandler = (e) => {
-        e.preventDefault();
+            const $elm = document.querySelector(obj.hookName);
+            const $trigger = $elm.getElementsByTagName(obj.tagName);
         
-        const $target = e.currentTarget;
-        const $content = $target.nextElementSibling;
+            const triggerLen = $trigger.length;
+            let index = 0;
+            while (index < triggerLen) {
+                $trigger[index].addEventListener('click', (e) => this.clickHandler(e));
+                index++;
+            }
+        }
 
-        if($content.style.display === 'block') {
-            $content.style.display = 'none';
-        } else {
-            $content.style.display = 'block';
+        clickHandler = (e) => {
+            e.preventDefault();
+            
+            const $target = e.currentTarget;
+            const $content = $target.nextElementSibling;
+    
+            if($content.style.display === 'block') {
+                $content.style.display = 'none';
+            } else {
+                $content.style.display = 'block';
+            }
         }
     }
+
+    const fuckingAccordion = new Accordion({
+        hookName: '#js_faq',
+        tagName: 'p'
+    });
+
+
 })();
 
