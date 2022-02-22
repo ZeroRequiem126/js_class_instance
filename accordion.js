@@ -2,7 +2,6 @@
 
     class Accordion {
         constructor(obj) {
-
             const $elm = document.querySelector(obj.hookName);
             const $trigger = $elm.getElementsByTagName(obj.tagName);
         
@@ -14,7 +13,7 @@
             }
         }
 
-        clickHandler = (e) => {
+        clickHandler (e) {
             e.preventDefault();
             
             const $target = e.currentTarget;
@@ -29,10 +28,21 @@
     }
 
     const fuckingAccordion = new Accordion({
-        hookName: '#js_faq',
+        hookName: '#js-faq',
         tagName: 'p'
     });
 
+    const dummyAccordion = new Accordion({
+        hookName: '#js-accordion',
+        tagName: 'a'
+    });
+
+    const miniAccordion= new Accordion({
+        hookName: '#js-accordion-mini',
+        tagName: 'dt'
+    });
+
+    
+
 
 })();
-
